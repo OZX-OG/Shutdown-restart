@@ -5,7 +5,7 @@ import pyttsx3
 import speech_recognition as sr
 import os
 import time
-
+print(" ----- ShutDown Restart computer with voice | Creat By: OZX-OG ----- ")
 def take_input_voice():
     r = sr.Recognizer()
     
@@ -17,7 +17,7 @@ def take_input_voice():
         try:
             print("Recognizing")
             # Recognizing audio using google api
-            Query = r.recognize_google(audio, language="en")
+            Query = r.recognize_google(audio, language='en-US')
             print("You say='", Query, "'")
         except Exception as e:
             print(e)
@@ -29,6 +29,9 @@ def take_input_voice():
 
 def Speak(audio):
     engine_api = pyttsx3.init("sapi5")
+
+    voices = engine_api.getProperty('voices')
+    engine_api.setProperty('voice', voices[1].id)
     engine_api.say(audio)
     engine_api.runAndWait()
 
@@ -36,7 +39,7 @@ Speak("Do you want to shutdown or restart your computer sir?")
 while True:
     voice = take_input_voice()
     if "no" in voice:
-        Speak("Thank u sir I will not shut down the computer")
+        Speak("Thank u sir For using this script")
         break
         
     elif "restart" in voice:
