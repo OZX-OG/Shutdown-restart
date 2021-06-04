@@ -11,7 +11,7 @@ def take_input_voice():
     
     with sr.Microphone() as source:
         print('Listening')
-        r.pause_threshold = 1
+        r.pause_threshold = 0.5
         audio = r.listen(source)
         
         try:
@@ -43,13 +43,13 @@ while True:
         break
         
     elif "restart" in voice:
-        Speak("restarting the computer")
+        Speak("Done, I restarting the computer For You sir")
         os.system('shutdown /r /t 0')
         break
         
-    elif "shutdown" in voice:
+    elif "shutdown" in voice or "shut down" in voice:
         # Shutting down
-        Speak("Shutting the computer")
+        Speak("Done, I Shutting the computer For You sir")
         os.system("shutdown /s /t 0")
         break
         
